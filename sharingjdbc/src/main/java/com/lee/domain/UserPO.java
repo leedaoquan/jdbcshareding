@@ -3,12 +3,14 @@ package com.lee.domain;
 import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.context.annotation.Primary;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class UserPO {
+@Table(name = "user")
+public class UserPO implements Serializable {
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
     private String name;
 

@@ -1,6 +1,6 @@
 package com.lee.service.impl;
 
-import com.lee.dao.UserRepository;
+import com.lee.repository.UserRepository;
 import com.lee.domain.UserPO;
 import com.lee.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

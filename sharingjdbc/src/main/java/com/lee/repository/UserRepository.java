@@ -1,4 +1,4 @@
-package com.lee.dao;
+package com.lee.repository;
 
 import com.lee.domain.UserPO;
 import org.springframework.data.jpa.repository.JpaRepository;
