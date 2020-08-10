@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(exclude = SpringBootConfiguration.class)
+@SpringBootApplication(exclude = {SpringBootConfiguration.class})
 public class ShardingJdbcApplication {
 
     public static void main(String[] args) {

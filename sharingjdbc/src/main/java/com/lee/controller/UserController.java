@@ -19,7 +19,7 @@ public class UserController {
     @RequestMapping("/insert")
     public void insert(){
         UserPO userPO=new UserPO();
-        userPO.setName("小姐姐");
+        userPO.setName("123");
         userService.save(userPO);
     }
 

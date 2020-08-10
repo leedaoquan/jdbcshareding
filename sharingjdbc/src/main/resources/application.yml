@@ -5,30 +5,29 @@ spring:
       hibernate:
         hbm2ddl:
           auto: none #update
+    database: mysql
 
-sharding:
-  jdbc:
-    dataSource:
-      names: ds_master,ds_slave_0
-      ds_master: #org.apache.tomcat.jdbc.pool.DataSource
-        type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://localhost:3306/test1?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
-        username: root
-        password: dongpinyun
-        driver-class-name: com.mysql.jdbc.Driver
-        maxPoolSize: 20
-      ds_slave_0:
-        type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://localhost:3306/test2?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
-        username: root
-        password: dongpinyun
-        driver-class-name: com.mysql.jdbc.Driver
-        maxPoolSize: 20
-    config:
-      master-slave-rule:
-        name: ds_ms
-        masterDataSourceName: ds_master
-        slaveDataSourceNames: [ds_slave_0]
-        load-balance-algorithm-type: round_robin
+sharding.jdbc:
+  data-sources:
+    master: #org.apache.tomcat.jdbc.pool.DataSource
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://localhost:3306/test1?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+      username: root
+      password: dongpinyun
+      driver-class-name: com.mysql.jdbc.Driver
+      maxPoolSize: 20
+    slave:
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://localhost:3306/test2?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+      username: root
+      password: dongpinyun
+      driver-class-name: com.mysql.jdbc.Driver
+      maxPoolSize: 20
+  master-slave-rule:
+    name: ds_ms
+    defaultDataSourceName: master
+    masterDataSourceName: master
+    slaveDataSourceNames: slave
+    load-balance-algorithm-type: round_robin
 props:
   sql.show: true
